@@ -78,6 +78,19 @@ useEffect(() => {
   scrollToBottom()
 }, [messages])
 
+//mobile compatible code
+
+const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+const handleResize = () => {
+  setIsMobile(window.innerWidth < 768);
+};
+
+useEffect(() => {
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
 return (
   <Box
     width="100vw"
@@ -93,8 +106,8 @@ return (
   >
     <Stack
       direction={'column'}
-      width="60%"
-      height="700px"
+      width={isMobile ? "90%" : "65%"}
+      height={isMobile ? "80vh" : "80%"}
       p={2}
       spacing={3}
       style={{ backdropFilter: 'blur(0.5px)', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
@@ -123,8 +136,8 @@ return (
                   : 'rgba(179, 229, 252, 0.9)'
               }
               color="black"
-              p={3}
-              borderRadius={16}
+              p={isMobile ? 2 : 3}
+              borderRadius={isMobile ? 12 : 16}
             >
               {message.content}
             </Box>
@@ -134,7 +147,7 @@ return (
       </Stack>
       <Stack 
       direction={'row'} 
-      spacing={2}
+      spacing={isMobile ? 1 : 2}
       >
         <TextField
           label="Message"
@@ -144,13 +157,14 @@ return (
           onKeyPress={handleKeyPress}
           disabled={isLoading}
           style={{ backgroundColor: 'rgba(255, 255, 255, 1)' }}
+          inputProps={{ style: { fontSize: isMobile ? '0.9rem' : '1rem' } }}
 
         />
         <Button 
         variant="contained" 
         onClick={sendMessage} 
         disabled={isLoading}
-        sx={{ backgroundColor: '#4CAF50', color: 'white', '&:hover': { backgroundColor: '#388E3C' } }}
+        sx={{ backgroundColor: '#4CAF50', color: 'white', '&:hover': { backgroundColor: '#388E3C' }, minWidth: '60px' }}
         >
         {isLoading ? 'Sending...' : 'Send'}
         </Button>
