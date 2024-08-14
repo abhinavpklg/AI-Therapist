@@ -1,4 +1,4 @@
-# Next.js Therapist Chatbot
+# AI Therapist Chatbot
 
 This is a demonstration of using Meta's LLaMA 3.5 model through [OpenRouter.ai](https://openrouter.ai/) to create a therapist chatbot. The application showcases the power of prompt engineering and LLM API usage.
 
