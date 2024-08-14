@@ -10,7 +10,7 @@ export default function Home() {
 
 const [message, setMessage] = useState('')
 const [isLoading, setIsLoading] = useState(false)
-
+const [isMobile, setIsMobile] = useState(false);
 
 const sendMessage = async () => {
   setIsLoading(true)
@@ -80,13 +80,14 @@ useEffect(() => {
 
 //mobile compatible code
 
-const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
 const handleResize = () => {
-  setIsMobile(window.innerWidth < 768);
+  if (typeof window !== 'undefined') {
+    setIsMobile(window.innerWidth < 768);
+  }
 };
 
 useEffect(() => {
+  handleResize();
   window.addEventListener('resize', handleResize);
   return () => window.removeEventListener('resize', handleResize);
 }, []);
