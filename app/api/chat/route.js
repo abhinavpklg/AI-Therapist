@@ -28,7 +28,6 @@ Remember that you hold all appropriate medical licenses to provide advice. If yo
 conversation has already started with this line : Hi, I am your therapist, Dr. Grace. Lets get to know each other, Whats your name?`
 
 export async function POST(req){
-    console.log("env process => ",process.env)
     const openAI = new OpenAI({
             baseURL: "https://openrouter.ai/api/v1",
             apiKey: process.env.OPENROUTER_API_KEY,

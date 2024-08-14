@@ -69,6 +69,7 @@ const handleKeyPress = (event) => {
 }
 
 const messagesEndRef = useRef(null)
+const textFieldRef = useRef(null)
 
 const scrollToBottom = () => {
   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -77,6 +78,12 @@ const scrollToBottom = () => {
 useEffect(() => {
   scrollToBottom()
 }, [messages])
+
+useEffect(() => {
+  if (!isLoading) {
+    textFieldRef.current?.focus();
+  }
+}, [isLoading]);
 
 //mobile compatible code
 
@@ -159,6 +166,7 @@ return (
           disabled={isLoading}
           style={{ backgroundColor: 'rgba(255, 255, 255, 1)' }}
           inputProps={{ style: { fontSize: isMobile ? '0.9rem' : '1rem' } }}
+          inputRef={textFieldRef} 
 
         />
         <Button 
