@@ -4,7 +4,7 @@ This is a demonstration of using Meta's LLaMA 3.5 model through [OpenRouter.ai](
 
 ## Live Demo
 
-The app is hosted on Vercel. Check out the live demo [here](https://your-vercel-link).
+The app is hosted on Vercel. Check out the live demo [here](https://therapist-bot.vercel.app/).
 
 ## Features
 
